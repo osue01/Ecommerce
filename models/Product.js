@@ -1,5 +1,5 @@
 // import important parts of sequelize library
-const { Model, DataTypes, INTEGER, STRING, DECIMAL } = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 // import our database connection from config.js
 const sequelize = require("../config/connection");
 
@@ -10,24 +10,24 @@ class Product extends Model {}
 Product.init(
   {
     id: {
-      type: INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
     product_name: {
-      type: STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     price: {
-      type: DECIMAL,
+      type: DataTypes.DECIMAL,
       allowNull: false,
       validate: {
         isDecimal: true,
       },
     },
     category_id: {
-      type: INTEGER,
+      type: DataTypes.INTEGER,
       references: {
         model: "category",
         key: "id",
